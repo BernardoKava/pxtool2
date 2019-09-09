@@ -6,7 +6,7 @@ class ItemVideo < ApplicationRecord
   before_create :default_name
 
   def default_name
-    self.name ||= File.basename(picture.filename, '.*').titleize if picture
+    self.name ||= File.basename(video.filename, '.*').titleize if video
     self.explicit ||= true
     self.educational ||= false
     self.relevant ||= false

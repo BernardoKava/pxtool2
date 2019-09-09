@@ -100,7 +100,7 @@ class ItemVideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_video_params
-      params.require(:item_video).permit(:name, :description, :author, :educational, :relevant, :q, :s, :notes, :picture, :explicit)
+      params.require(:item_video).permit(:name, :description, :author, :educational, :relevant, :q, :s, :notes, :video, :explicit)
     end
 
     def sort_column
