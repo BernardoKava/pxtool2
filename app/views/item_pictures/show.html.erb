@@ -1,0 +1,73 @@
+<% provide(:title, "View") %>
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="breadcrumb" style="background-color: navy;color: #F7F7F7">
+  Media ID: <%= @item_picture.id %> | <%= @item_picture.name %>
+</div>
+
+
+<div class="jumbotron" style="background-color: silver;color: navy">
+  <table class="table table-bordered"style="background-color: whitesmoke">
+    <tbody>
+    <tr>
+      <td>Name:</td>
+      <td><%= @item_picture.name %></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><%= @item_picture.description %></td>
+    </tr>
+    <tr>
+      <td>Author:</td>
+      <td><%= @item_picture.author %></td>
+    </tr>
+    <!-- <tr>
+      <td>Category:</td>
+      <td><%# @item.category.name %></td>
+    </tr> -->
+    <tr>
+      <td>Educational:</td>
+      <td><%= @item_picture.educational.humanize %></td>
+    </tr>
+    <tr>
+      <td>Relevant:</td>
+      <td><%= @item_picture.relevant.humanize %></td>
+    </tr>
+    <tr>
+      <td>Q:</td>
+      <td><%= @item_picture.q.humanize %></td>
+    </tr>
+    <tr>
+      <td>S:</td>
+      <td><%= @item_picture.s.humanize %></td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td><%= @item_picture.notes %></td>
+    </tr>
+    <tr>
+      <td>Picture:</td>
+      <td>
+        <% if @item_picture.picture? %>
+          <div>
+            <%= image_tag (@item_picture.picture.url) if @item_picture.picture? %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Explicit:</td>
+      <td><%= @item_picture.explicit.humanize %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="breadcrumb" style="background: khaki;color:darkred">
+  <%= link_to 'Edit', edit_item_picture_path(@item_picture), style:'color:darkred' %> |
+  <%= link_to 'Back', item_pictures_path, style:'color:darkred'%>
+</div>
+
+

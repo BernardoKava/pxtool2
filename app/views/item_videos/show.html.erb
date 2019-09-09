@@ -1,0 +1,77 @@
+<% provide(:title, "View") %>
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="breadcrumb" style="background-color: navy;color: #F7F7F7">
+  Media ID: <%= @item_video.id %> | <%= @item_video.name %>
+</div>
+
+
+<div class="jumbotron" style="background-color: silver;color: navy">
+  <table class="table table-bordered"style="background-color: whitesmoke">
+    <tbody>
+    <tr>
+      <td>Name:</td>
+      <td><%= @item_video.name %></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td><%= @item_video.description %></td>
+    </tr>
+    <tr>
+      <td>Author:</td>
+      <td><%= @item_video.author %></td>
+    </tr>
+    <!-- <tr>
+      <td>Category:</td>
+      <td><%# @item.category.name %></td>
+    </tr> -->
+    <tr>
+      <td>Educational:</td>
+      <td><%= @item_video.educational.humanize %></td>
+    </tr>
+    <tr>
+      <td>Relevant:</td>
+      <td><%= @item_video.relevant.humanize %></td>
+    </tr>
+    <tr>
+      <td>Q:</td>
+      <td><%= @item_video.q.humanize %></td>
+    </tr>
+    <tr>
+      <td>S:</td>
+      <td><%= @item_video.s.humanize %></td>
+    </tr>
+    <tr>
+      <td>Notes:</td>
+      <td><%= @item_video.notes %></td>
+    </tr>
+
+    <tr>
+      <td>Video:</td>
+      <td>
+        <% if @item_video.video? %>
+          <div>
+            <%= video_tag (@item.video.url), controls:'', size:'500x500' if @item.video? %>
+          </div>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>Explicit:</td>
+      <td><%= @item_video.explicit.humanize %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="breadcrumb" style="background: khaki;color:darkred">
+  <%= link_to 'Edit', edit_item_video_path(@item_video), style:'color:darkred' %> |
+  <%= link_to 'Back', item_videos_path, style:'color:darkred'%>
+</div>
+
+
+
+
+

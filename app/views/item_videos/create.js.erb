@@ -1,0 +1,6 @@
+
+<% if @item_video.new_record? %>
+alert("Failed to upload Video(s): <%= j @item_video.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+$("#item_videos").append("<%= j render(@item_video) %>");
+<% end %>

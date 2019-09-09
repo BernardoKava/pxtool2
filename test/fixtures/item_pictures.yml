@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  author: MyString
+  educational: false
+  relevant: false
+  q: false
+  s: false
+  notes: MyText
+  picture: MyString
+  explicit: false
+
+two:
+  name: MyString
+  description: MyText
+  author: MyString
+  educational: false
+  relevant: false
+  q: false
+  s: false
+  notes: MyText
+  picture: MyString
+  explicit: false

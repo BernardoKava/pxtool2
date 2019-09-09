@@ -1,0 +1,14 @@
+
+<% provide(:title, "Edit") %>
+<div class="breadcrumb" style="background-color: navy;color:white">
+  <h4>
+    Editing <%= @item_picture.name %>
+  </h4>
+</div>
+
+<%= render 'form', item: @item_picture %>
+
+<div class="breadcrumb"style="background-color: khaki">
+  <%= link_to 'View', @item_picture %> |
+  <%= link_to 'Back', item_pictures_path %>
+</div>

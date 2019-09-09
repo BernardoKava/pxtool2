@@ -1,0 +1,50 @@
+
+<%= simple_form_for(@item_picture , html: { class: 'form' }) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="container" style="background-color: lightblue">
+    <% if @item_picture.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(item_picture.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+        <ul>
+          <% item_picture.errors.full_messages.each do |item| %>
+            <li><%= item %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <br>
+    <div class="jumbotron" style="background-color:lightgoldenrodyellow">
+      <div class="form-input">
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :explicit %>
+        <%= f.input :author %>
+        <%= f.input :educational %>
+        <%= f.input :relevant %>
+        <%= f.input :q %>
+        <%= f.input :s %>
+        <%= f.input :notes %>
+        <br>
+        <hr>
+        <!-- <h5>Upload a picture</h5>
+        <%# f.file_field :picture %>
+        <hr>
+        <h5>Upload a video</h5>
+        <%# f.file_field :video %>
+        <hr> -->
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit,"Save" %>
+    </div>
+    <hr>
+  </div>
+
+<% end %>
+<br>

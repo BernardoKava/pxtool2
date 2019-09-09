@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %> | PXtool2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <%= render 'layouts/shim' %>
+
+    <%# favicon_link_tag asset_path('atom Logo.png') %>
+  </head>
+
+  <body>
+    <%= render 'layouts/header' %>
+    <div class="container-fluid">
+      <% if current_user %>
+        <%= render 'layouts/username'%>
+      <% else %>
+
+      <% end %>
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
+
+  </body>
+</html>

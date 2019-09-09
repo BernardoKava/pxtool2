@@ -1,0 +1,8 @@
+
+
+<% if @item_picture.new_record? %>
+alert("Failed to upload Picture(s): <%= j @item_picture.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+$("#item_pictures").append("<%= j render(@item_picture) %>");
+<% end %>
+

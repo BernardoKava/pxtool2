@@ -1,0 +1,44 @@
+<% provide(:title, "Home") %>
+
+<title><%= yield(:title) %> | Pxtool</title>
+
+<div class="container">
+  <div class="jumbotron">
+    <table class="table table"style="background-color: white">
+      <tbody>
+      <% if current_user %>
+
+        <% if current_user.access_granted?%>
+          <tr>
+            <td><%= link_to "Picture Records", item_pictures_path,style:'color:navy' %></td>
+            <td><%= @standard_cont_access_message %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "Video Records", item_videos_path,style:'color:navy' %></td>
+            <td><%= @standard_cont_access_message %></td>
+          </tr>
+        <% else %>
+          <div class="jumbotron" style="background-color: #730E15;color:whitesmoke">
+            <%= @no_access_message %>
+          </div>
+        <% end %>
+
+      <% else %>
+        <div class="jumbotron"style="background-color: navy;color: white">
+          <strong><h3>Welcome to PXtool</h3></strong><br>
+          <p>This is a video and image file repository.</p>
+          <p>Please login to access  video or image/picture files.</p>
+          <p>Only authorised users may access the applications with their active credentials.</p>
+          <p>Credentials may differ from the ones used to access the Atom applications.</p>
+          <p>To request access please email the system administrator (herga.a@outlook.com).</p>
+        </div>
+      <% end %>
+
+      </tbody>
+    </table>
+
+  </div>
+  <div class="breadcrumb"style="background-color: khaki">
+
+  </div>
+</div>

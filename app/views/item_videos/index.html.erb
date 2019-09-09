@@ -1,0 +1,49 @@
+<% provide(:title, "Videos") %>
+
+
+<p id="notice"><%= notice %></p>
+
+
+<div class="breadcrumb"style="background-color: navy;color: white">
+  <h5><%= @heading %> </h5>
+</div>
+
+
+
+<div class="breadcrumb" style="background-color: silver">
+  <%= simple_form_for :search, url: item_videos_path, method: "GET", html: { class: 'form-inline' } do |f|%>
+    <%= f.input :name, input_html: {value: ""} ,label:"Media Name"  %> <hr>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<div>
+  <%= render 'item_videos/item_videos' %>
+</div>
+
+
+<div class="breadcrumb">
+  <%= form_for ItemVideo.new do |f| %>
+    <%= f.label :video, " Upload Video(s): "%>
+    <%= f.file_field :video, multiple: true, name: "item_video[video]" %>
+  <% end %>
+</div>
+
+<div class="breadcrumb">
+  <script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+
+    <div class="progress">
+      <div class="bar" style="width: 0%"></div>
+    </div>
+  </div>
+</script>
+</div>
+
+
+
+
+<div class="breadcrumb" style="background-color: lightgreen">
+  <%= link_to 'Return to Home', root_path %>
+</div>

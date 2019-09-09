@@ -1,0 +1,41 @@
+<div class="jumbotron">
+
+  <div class="jumbotron">
+    <%= will_paginate @item_videos %>
+    <table class="table table-bordered" style="background-color: silver">
+      <thead>
+      <tr>
+        <th class="alert-info"><%= sortable "name" %></th>
+        <th class="alert-info"><%= sortable "id" %></th>
+        <th class="alert-info"></th>
+        <th class="alert-info"></th>
+        <th class="alert-info"></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @item_videos.each do |item| %>
+        <tr>
+          <td>
+            <% if item.video? %>
+              <div>
+                <%= video_tag (item.video.url), size:"400x400", controls:'' if item.video? %>
+              </div>
+            <% end %>
+          </td>
+        <tr>
+          <td><%= link_to item.name,item %></td>
+          <td><%= item.id %></td>
+          <td><%= link_to 'Details', item,style:'color:darkred'%></td>
+          <% if current_user.admin? %>
+            <td><%= link_to 'Edit', edit_item_video_path(item), class:'fa fa-edit',style:'color:darkred' %></td>
+            <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove',style:'color:darkred' %></td>
+        <% end %>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate @item_videos %>
+  </div>
+  <br>
+</div>

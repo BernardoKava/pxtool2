@@ -1,0 +1,11 @@
+<% provide(:title, "New") %>
+<div class="breadcrumb" style="background-color: navy;color: white">
+  <h5>New Item</h5>
+</div>
+
+<%= render 'form', item: @item_picture %>
+
+<div class="breadcrumb"style="background-color: khaki">
+  <%= link_to 'Back', item_pictures_path %>
+</div>
+
