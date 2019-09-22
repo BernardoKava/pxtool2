@@ -1,0 +1,23 @@
+<div>
+  <% @item_pictures.each do |item| %>
+
+    <div class="item">
+      <%= link_to image_tag(item.picture.url), item if item.picture?  %>
+      <div class="name"><%= item.name %></div>
+      <div class="item_actions">
+        <%= link_to "edit", edit_item_picture_path(item) %> |
+        <%= link_to 'remove', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+    </div>
+
+  <% end %>
+  <br>
+
+  <div>
+    <%= will_paginate @item_pictures %>
+  </div>
+</div>
+
+
+
+

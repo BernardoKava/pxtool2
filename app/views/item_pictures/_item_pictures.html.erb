@@ -7,6 +7,10 @@
       <tr>
         <th class="alert-info"><%= sortable "name" %></th>
         <th class="alert-info"><%= sortable "id" %></th>
+        <th class="alert-info"><%= sortable "q" %></th>
+        <th class="alert-info"><%= sortable "s" %></th>
+        <th class="alert-info"><%= sortable "b" %></th>
+        <th class="alert-info"><%= sortable "w" %></th>
         <th class="alert-info"></th>
         <th class="alert-info"></th>
         <th class="alert-info"></th>
@@ -26,10 +30,14 @@
         <tr>
           <td><%= link_to item.name,item %></td>
           <td><%= item.id %></td>
-          <td><%= link_to 'Details', item,style:'color:darkred'%></td>
+          <td><%= item.s.humanize %></td>
+          <td><%= item.q.humanize %></td>
+          <td><%= item.b.humanize %></td>
+          <td><%= item.w.humanize%></td>
+       <!--   <td><%# link_to '', item,style:'color:darkred', class:'fa fa-eye'%></td>  the name of the record is a link to the show page-->
           <% if current_user.admin? %>
-            <td><%= link_to 'Edit', edit_item_picture_path(item), class:'fa fa-edit',style:'color:darkred' %></td>
-            <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove',style:'color:darkred' %></td>
+            <td><%= link_to '', edit_item_picture_path(item), class:'fa fa-edit',style:'color:darkred' %></td>
+            <td><%= link_to '', item, method: :delete, data: { confirm: 'Are you sure?' }, class:'fa fa-remove',style:'color:darkred' %></td>
         <% end %>
         </tr>
       <% end %>

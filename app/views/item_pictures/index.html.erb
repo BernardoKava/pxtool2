@@ -9,6 +9,9 @@
 <div class="breadcrumb"style="background-color: navy;color: white">
   <h5><%= @heading %> </h5>
 </div>
+<div class="breadcrumb">
+  <%= link_to "Gallery View", item_pictures_gallery_path,class:"btn btn-warning", style:'color:white' %>
+</div>
 
 <div class="breadcrumb" style="background-color: silver">
   <%= simple_form_for :search, url: item_pictures_path, method: "GET", html: { class: 'form-inline' } do |f|%>
@@ -27,7 +30,6 @@
     <%= f.file_field :picture, multiple: true, name: "item_picture[picture]" %>
   <% end %>
 </div>
-
 
 <div class="breadcrumb">
   <script id="template-upload" type="text/x-tmpl">

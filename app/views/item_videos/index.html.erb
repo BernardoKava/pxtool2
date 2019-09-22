@@ -8,7 +8,9 @@
   <h5><%= @heading %> </h5>
 </div>
 
-
+<div class="breadcrumb">
+  <%= link_to "Gallery View", item_videos_gallery_path,class:"btn btn-warning", style:'color:white' %>
+</div>
 
 <div class="breadcrumb" style="background-color: silver">
   <%= simple_form_for :search, url: item_videos_path, method: "GET", html: { class: 'form-inline' } do |f|%>

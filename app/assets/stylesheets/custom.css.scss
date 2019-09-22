@@ -69,3 +69,57 @@ textarea {
   box-sizing: border-box;
   width: 100%;
 }
+
+
+/* file upload */
+
+.upload {
+  border-top: solid 1px #CCC;
+  width: 400px;
+  padding-top: 10px;
+  margin-top: 10px;
+
+  .progress {
+    margin-top: 8px;
+   // border: solid 1px #555;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    .bar {
+      height: 10px;
+      background: #3EC144;
+    }
+  }
+}
+
+
+/* item gallery view*/
+
+
+#new_item_picture {
+  clear: both;
+}
+#new_item_video {
+  clear: both;
+}
+
+.item {
+  border: solid 1px #CCC;
+  padding: 10px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+
+  .name {
+    padding-top: 5px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .item_actions {
+    font-size: 10px;
+    text-align: center;
+
+    color: #777;
+  }
+}

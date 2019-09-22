@@ -22,7 +22,7 @@ class ItemPicturesController < ApplicationController
         @item_pictures = ItemPicture.where("name ILIKE ?", "%#{@search_term}%")
       end
 
-      @item_pictures = @item_pictures.paginate(page: params[:page], :per_page => 200)
+      @item_pictures = @item_pictures.where(explicit:true).paginate(page: params[:page], :per_page => 200)
                    .order(sort_column + " " + sort_direction)
 
       render action: :index
@@ -49,6 +49,51 @@ class ItemPicturesController < ApplicationController
 
     end
 
+  end
+
+  # this is the gallery view controller action => identical behaviour with index action
+  def gallery
+    if current_user.explicit?
+      # Show all items including the ones marked explicit
+      @item_pictures = ItemPicture.all
+      @heading = "Picture Records [E*]"
+
+      # search Id
+      @search = params["search"]
+
+      if @search.present?
+
+        @search_term = @search["name"]
+
+        @item_pictures = ItemPicture.where("name ILIKE ?", "%#{@search_term}%")
+      end
+
+      @item_pictures = @item_pictures.where(explicit:true).paginate(page: params[:page], :per_page => 200)
+                           .order("id DESC" )
+
+      render action: :gallery
+
+    else
+      # Show only items not marked as explicit
+      @item_pictures = ItemPicture.all
+      @heading = "Picture Records [S*]"
+
+      # search Id
+      @search = params["search"]
+
+      if @search.present?
+
+        @search_term = @search["name"]
+
+        @item_pictures = ItemPicture.where("name ILIKE ?", "%#{@search_term}%")
+
+      end
+      @item_pictures = @item_pictures.where(explicit: false).paginate(page: params[:page], :per_page => 200)
+                           .order( "id DESC" )
+
+      render action: :gallery
+
+    end
   end
   # GET /item_pictures/1
   # GET /item_pictures/1.json
@@ -102,7 +147,7 @@ class ItemPicturesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_picture_params
-      params.require(:item_picture).permit(:name, :description, :author, :educational, :relevant, :q, :s, :notes, :picture, :explicit)
+      params.require(:item_picture).permit(:name, :description, :author, :educational, :relevant, :q, :s,:b,:w, :notes, :picture, :explicit)
     end
 
 

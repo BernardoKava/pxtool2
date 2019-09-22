@@ -44,6 +44,14 @@
       <td><%= @item_video.s.humanize %></td>
     </tr>
     <tr>
+      <td>B:</td>
+      <td><%= @item_video.b.humanize %></td>
+    </tr>
+    <tr>
+      <td>W:</td>
+      <td><%= @item_video.w.humanize %></td>
+    </tr>
+    <tr>
       <td>Notes:</td>
       <td>
         <textarea>
@@ -57,7 +65,7 @@
       <td>
         <% if @item_video.video? %>
           <div>
-            <%= video_tag (@item.video.url), controls:'', size:'500x500' if @item.video? %>
+            <%= video_tag (@item_video.video.url), controls:'', size:'500x500' if @item_video.video? %>
           </div>
         <% end %>
       </td>

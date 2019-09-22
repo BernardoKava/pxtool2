@@ -1,0 +1,56 @@
+
+
+<% provide(:title, "Pictures") %>
+
+
+<div>
+  <p id="notice"><%= notice %></p>
+
+
+  <div class="breadcrumb"style="background-color: navy;color: white">
+    <h5><%= @heading %> </h5>
+  </div>
+
+  <div class="breadcrumb" style="background-color: silver">
+    <%= simple_form_for :search, url: item_pictures_gallery_path, method: "GET", html: { class: 'form-inline' } do |f|%>
+      <%= f.input :name, input_html: {value: ""} ,label:"Media Name"  %> <hr>
+      <%= f.submit "Search", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <div>
+    <%= will_paginate @item_pictures %>
+  </div>
+  <div id="item_pictures">
+    <div>
+      <%= render 'item_pictures/item_pictures_gallery' %>
+    </div>
+  </div>
+  <br>
+  <div>
+    <%= form_for ItemPicture.new do |f| %>
+      <%= f.label :picture, " Upload Picture(s): "%>
+      <%= f.file_field :picture, multiple: true, name: "item_picture[picture]" %>
+    <% end %>
+  </div>
+
+
+  <script id="template-upload" type="text/x-tmpl">
+  <div class="upload">
+    {%=o.name%}
+
+    <div class="progress">
+      <div class="bar" style="width: 0%"></div>
+    </div>
+  </div>
+  </script>
+
+<br>
+
+  <div class="breadcrumb" style="background-color: lightgreen">
+    <%= link_to 'Return to Home', root_path %>
+  </div>
+
+</div>
+
+
+

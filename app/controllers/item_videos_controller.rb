@@ -21,7 +21,7 @@ class ItemVideosController < ApplicationController
         @item_videos = ItemVideo.where("name ILIKE ?", "%#{@search_term}%")
       end
 
-      @item_videos = @item_videos.paginate(page: params[:page], :per_page => 50)
+      @item_videos = @item_videos.where(explicit:true).paginate(page: params[:page], :per_page => 50)
                    .order(sort_column + " " + sort_direction)
       render action: :index
 
@@ -48,6 +48,51 @@ class ItemVideosController < ApplicationController
 
 
   end
+
+
+  # this is the gallery view controller action => identical behaviour with index action
+  def gallery
+    if current_user.explicit?
+      # Show all items including the ones marked explicit
+      @item_videos = ItemVideo.all
+      @heading = "Video Records [E*]"
+
+      # search Id
+      @search = params["search"]
+
+      if @search.present?
+
+        @search_term = @search["name"]
+
+        @item_videos = ItemVideo.where("name ILIKE ?", "%#{@search_term}%")
+      end
+
+      @item_videos = @item_videos.where(explicit:true).paginate(page: params[:page], :per_page => 50)
+                         .order(sort_column + " " + sort_direction)
+      render action: :gallery
+
+    else
+      # Show only items not marked as explicit
+      @item_videos = ItemVideo.all
+      @heading = "Video Records [S*]"
+
+      # search Id
+      @search = params["search"]
+
+      if @search.present?
+
+        @search_term = @search["name"]
+
+        @item_videos = ItemVideo.where("name ILIKE ?", "%#{@search_term}%")
+
+      end
+      @item_videos = @item_videos.where(explicit: false).paginate(page: params[:page], :per_page => 50)
+                         .order(sort_column + " " + sort_direction)
+      render action: :gallery
+
+    end
+  end
+
   # GET /item_videos/1
   # GET /item_videos/1.json
   def show
@@ -100,7 +145,7 @@ class ItemVideosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_video_params
-      params.require(:item_video).permit(:name, :description, :author, :educational, :relevant, :q, :s, :notes, :video, :explicit)
+      params.require(:item_video).permit(:name, :description, :author, :educational, :relevant, :q, :s,:b,:w, :notes, :video, :explicit)
     end
 
     def sort_column
